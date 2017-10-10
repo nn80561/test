@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { signup } from '../actions';
+import { signupRequest } from '../actions';
 import Form from '../components/form';
+import Message from '../components/message';
 
 class FormContainer extends Component {
     render() {
+        const props = this.props;
         return (
             <div>
                 <Form
-                    signup={this.props.signup}
+                    signup={(data)=> props.signupRequest(data)}
+                />
+                <Message
+                    fullName={props.fullName}
+                    hasSucceeded={props.signupRequestState}
                 />
             </div>
         );
@@ -16,12 +22,13 @@ class FormContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-
+    fullName: state.fullName,
+    signupRequestState: state.signupRequestState
 });
 
 FormContainer = connect(
     mapStateToProps,
-    { signup }
+    { signupRequest }
 )(FormContainer);
 
 export default FormContainer;

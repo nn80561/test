@@ -47,10 +47,23 @@ export const signupRequestState = (state = null, action) => {
     }
 };
 
+export const isApiLoading = (state = false, action) => {
+    switch (action.type) {
+    case 'SIGNUP_REQUEST':
+        return true;
+    case 'SIGNUP_SUCCESS':
+    case 'SIGNUP_FAIL':
+        return false;
+    default:
+        return state;
+    }
+};
+
 export default combineReducers({
     email,
     fullName,
     company,
     password,
-    signupRequestState
+    signupRequestState,
+    isApiLoading
 });

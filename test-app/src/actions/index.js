@@ -12,10 +12,14 @@ export const signupFail = (err) => ({
 
 export const signupRequest = (data) => {
     return (dispatch) => {
+    	dispatch({ type: 'SIGNUP_REQUEST' });
 
         api(data)
-            .then((response) => dispatch(signupSuccess(response)))
-            .catch((err) => dispatch(signupFail(err)));
+            .then(
+            	response => dispatch(signupSuccess(response)),
+            	err => dispatch(signupFail(err))
+            )
+
     };
 };
 

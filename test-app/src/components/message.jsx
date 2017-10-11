@@ -14,12 +14,18 @@ class Message extends Component {
     }
 
     render() {
+        let msg = 'Thanks for registering';
+        const name = this.props.fullName;
+
+        msg = (name && name !== '') ? msg + ', ' + name : msg;
+        msg += '!';
+
         return (
             <div className={this.getClassName()}>
                 {
                     this.props.hasSucceeded ?
-                        <div>Thanks for registering, {this.props.fullName}!</div>
-                        : <div>I'm sorry. We were unable to process your request.</div>
+                        <div>{msg}</div>
+                        : <div>I&#39;m sorry. We were unable to process your request.</div>
                 }
             </div>
         );

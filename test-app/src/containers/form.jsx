@@ -11,6 +11,7 @@ class FormContainer extends Component {
             <div>
                 <Form
                     signup={(data)=> props.signupRequest(data)}
+                    isApiLoading={props.isApiLoading}
                 />
                 <Message
                     fullName={props.fullName}
@@ -23,7 +24,8 @@ class FormContainer extends Component {
 
 const mapStateToProps = (state) => ({
     fullName: state.fullName,
-    signupRequestState: state.signupRequestState
+    signupRequestState: state.signupRequestState,
+    isApiLoading: state.isApiLoading
 });
 
 FormContainer = connect(

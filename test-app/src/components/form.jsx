@@ -68,7 +68,7 @@ class Form extends Component {
                     className="submit-btn"
                     type="submit"
                 >
-                    Register
+                    {this.props.isApiLoading ? 'Loading...' : 'Register'}
                 </button>
             </form>
         );
@@ -76,7 +76,8 @@ class Form extends Component {
 }
 
 Form.propTypes = {
-    signup: PropTypes.func
+    signup: PropTypes.func,
+    isApiLoading: PropTypes.bool
 }
 
 export default Form;
